@@ -1,0 +1,29 @@
+# Executables
+*.exe
+*.out
+*.app
+main
+
+# Compiled Object files
+*.slo
+*.lo
+*.ko
+*.o
+
+# Libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+*.lai
+*.la
+*.a
+*.lib
+
+# project files or operating sytem filesfor specific editors
+.swp
+.eprj
+.project
+.idea
+.dotest
+.orig
