@@ -9,5 +9,5 @@ Game::Game() : is_running(true),
 bool Game::isRunning() { return is_running; }
 
 void Game::initCurrentState() {
-  std::cout << "Init current state";
+  std::cout << "Init current state \n";
 }
