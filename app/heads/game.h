@@ -6,6 +6,7 @@
 class Game {
   bool is_running;
   SDL_Surface *screen;
+  State *current_state;
 
   public:
     Game();

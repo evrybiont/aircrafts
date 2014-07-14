@@ -3,6 +3,6 @@
 
 Intro::Intro() : area(MENU) {}
 
-void Intro::init() { std::cout << "init Intro \n"; }
+void Intro::init() { std::cout << "init Intro State \n"; }
 
 int Intro::nextArea() { return area; }
