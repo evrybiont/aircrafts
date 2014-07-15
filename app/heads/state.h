@@ -1,7 +1,7 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "../lib/sdl.h"
+#include "tools.h"
 
 class State {
   protected:
