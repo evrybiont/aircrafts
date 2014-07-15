@@ -8,7 +8,7 @@ class Intro: public State {
 
   public:
     Intro();
-    void init();
+    void init(Game*);
     int nextArea();
 };
 

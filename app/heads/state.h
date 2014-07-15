@@ -9,7 +9,7 @@ class State {
     enum scope { INTRO, MENU, LEVELS };
   public:
     State();
-    virtual void init() = 0;
+    virtual void init(class Game*) = 0;
     virtual int nextArea() = 0;
 };
 

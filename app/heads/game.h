@@ -5,13 +5,15 @@
 
 class Game {
   bool is_running;
-  SDL_Surface *screen;
   State *current_state;
+  SDL_Surface *screen;
 
   public:
     Game();
     bool isRunning();
     void initCurrentState();
+    SDL_Surface* getScreen();
+    void stop();
 };
 
 #endif

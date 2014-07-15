@@ -12,6 +12,10 @@ Game::Game() : is_running(true),
 
 bool Game::isRunning() { return is_running; }
 
+SDL_Surface* Game::getScreen() { return screen; }
+
+void Game::stop() { is_running = false; }
+
 void Game::initCurrentState() {
-  current_state->init();
+  current_state->init(this);
 }
