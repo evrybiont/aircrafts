@@ -9,12 +9,14 @@ void Intro::init(Game *game) {
   SDL_Surface *screen = NULL;
   screen = game->getScreen();
 
-  std::cout << "init Intro State \n";
+  //std::cout << "init Intro State \n";
 
+  Timer fps;
   SDL_Event event;
   int key_code;
 
   while(is_active) {
+    fps.start();
     while (SDL_PollEvent(&event)) {
       key_code = event.key.keysym.sym;
 
@@ -28,5 +30,6 @@ void Intro::init(Game *game) {
         game->stop();
       }
     }
+    sdl::delay(&fps);
   }
 }

@@ -3,7 +3,7 @@
 
 int main() {
 
-  if (game.isRunning()) { game.initCurrentState(); }
+  while (game.isRunning()) { game.initCurrentState(); }
 
   return 0;
 }
