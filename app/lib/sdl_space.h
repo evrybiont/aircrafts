@@ -7,6 +7,7 @@ namespace sdl {
 
   void delay(Timer*);
 
+  SDL_Surface *loadImage(std::string);
 }
 
 #endif

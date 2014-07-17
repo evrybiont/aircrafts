@@ -4,7 +4,7 @@ OBJ_NAME = main
 
 OBJS = app/objects/**.cpp main.cpp
 
-LIBRARIES = -lSDL -lSDL_image
+LIBRARIES = -lSDL -lSDL_image -lSDL_ttf
 
 DEBUGGER = -g
 
