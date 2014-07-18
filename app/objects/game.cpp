@@ -1,6 +1,5 @@
 #include "../heads/game.h"
 #include "../heads/intro_state.h"
-#include "../lib/screen_const.h"
 #include <iostream>
 
 Intro intro;

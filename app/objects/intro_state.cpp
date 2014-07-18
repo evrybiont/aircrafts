@@ -9,10 +9,9 @@ int Intro::nextArea() { return area; }
 void Intro::init(Game *game) {
   SDL_Surface *background = NULL;
   SDL_Surface *message = NULL;
+  SDL_Surface *bottom_message = NULL;
 
   background = sdl::loadImage("app/images/intro_background.png");
-
-  if (!background) { std::cout << "Background not found"; }
 
   TTF_Init();
   TTF_Font *font = NULL;
@@ -21,14 +20,24 @@ void Intro::init(Game *game) {
 
   if (font == NULL) { std::cout << TTF_GetError(); }
 
-  message = TTF_RenderText_Solid( font, STATUS, text_color );
+  message = TTF_RenderText_Solid(font, STATUS, text_color);
+  bottom_message = TTF_RenderText_Solid(font, NEXT_EVENT, text_color);
 
   SDL_Rect offset;
   offset.x = 0;
   offset.y = 0;
 
   SDL_BlitSurface(background, NULL, game->getScreen(), &offset);
+
+  offset.x = (SC_WIDTH - message->w) / 2;
+  offset.y = 50;
+
   SDL_BlitSurface(message, NULL, game->getScreen(), &offset);
+
+  offset.x = (SC_WIDTH - bottom_message->w) / 2;
+  offset.y = 300;
+
+  SDL_BlitSurface(bottom_message, NULL, game->getScreen(), &offset);
 
   Timer fps;
   SDL_Event event;

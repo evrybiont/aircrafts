@@ -1,4 +1,5 @@
 #include "../lib/sdl_space.h"
+#include <iostream>
 
 namespace sdl {
   const int FPS = 10;
@@ -14,6 +15,8 @@ namespace sdl {
     SDL_Surface *optimezed_image = NULL;
 
     image = IMG_Load(path.c_str());
+
+    if (!image) { std::cout << "IMG_Load: \n" << "\t" << IMG_GetError(); return NULL; }
 
     SDL_SetColorKey(image, SDL_SRCCOLORKEY, SDL_MapRGBA(image->format, 255, 255, 255, 255));
 
