@@ -2,53 +2,65 @@
 #include "../config/locales/intro.h"
 #include <iostream>
 
-Intro::Intro() : area(MENU) {}
+  using namespace sdl;
 
-int Intro::nextArea() { return area; }
+  Intro::Intro() : area(MENU),
+                   background(NULL),
+                   message(NULL),
+                   bottom_message(NULL) {}
 
-void Intro::init(Game *game) {
-  SDL_Surface *background = NULL;
-  SDL_Surface *message = NULL;
-  SDL_Surface *bottom_message = NULL;
+  int Intro::nextArea() { return area; }
 
-  background = sdl::loadImage("app/images/intro_background.png");
+  void Intro::setGame(Game *g) { game = g; }
 
-  TTF_Init();
-  TTF_Font *font = NULL;
-  SDL_Color text_color = { 255, 255, 100 };
-  font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", 32);
+  void Intro::update() {
+    blink(bottom_message);
+    applySurface(0, 0, background, game->getScreen());
+    applySurface(((SC_WIDTH - message->w) / 2), 50, message, game->getScreen());
+    applySurface(((SC_WIDTH - bottom_message->w) / 2), 300, bottom_message, game->getScreen());
+  }
 
-  if (font == NULL) { std::cout << TTF_GetError(); }
+  void Intro::init(Game *game) {
+    setGame(game);
+    background = sdl::loadImage("app/images/intro_background.png");
 
-  message = TTF_RenderText_Solid(font, STATUS, text_color);
-  bottom_message = TTF_RenderText_Solid(font, NEXT_EVENT, text_color);
+    TTF_Init();
+    TTF_Font *font = NULL;
+    SDL_Color text_color = { 255, 255, 100 };
+    font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", 32);
 
-  sdl::applySurface(0, 0, background, game->getScreen());
-  sdl::applySurface(((SC_WIDTH - message->w) / 2), 50, message, game->getScreen());
-  sdl::applySurface(((SC_WIDTH - message->w) / 2), 300, bottom_message, game->getScreen());
+    if (font == NULL) { std::cout << TTF_GetError(); }
 
-  Timer fps;
-  SDL_Event event;
-  int key_code;
+    message = TTF_RenderText_Solid(font, STATUS, text_color);
+    bottom_message = TTF_RenderText_Solid(font, NEXT_EVENT, text_color);
 
-  while(is_active) {
-    fps.start();
-    while (SDL_PollEvent(&event)) {
-      key_code = event.key.keysym.sym;
+    Timer fps;
+    SDL_Event event;
+    int key_code;
 
-      if (key_code == SDLK_ESCAPE || key_code == SDLK_SPACE) {
-        is_active = false;
-        break;
+    while(is_active) {
+      fps.start();
+
+      update();
+
+      while (SDL_PollEvent(&event)) {
+        key_code = event.key.keysym.sym;
+
+        if (key_code == SDLK_ESCAPE || key_code == SDLK_SPACE) {
+          is_active = false;
+          break;
+        }
+
+        if (event.type == SDL_QUIT) {
+          is_active = false;
+          game->stop();
+        }
       }
 
-      if (event.type == SDL_QUIT) {
-        is_active = false;
-        game->stop();
-      }
+      SDL_Flip(game->getScreen());
+
+      delay(&fps);
     }
 
-    SDL_Flip(game->getScreen());
-
-    sdl::delay(&fps);
+    freeBlink();
   }
-}
