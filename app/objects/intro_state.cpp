@@ -20,6 +20,14 @@
     applySurface(((SC_WIDTH - bottom_message->w) / 2), 300, bottom_message, game->getScreen());
   }
 
+  void Intro::clear(){
+    freeBlink();
+    TTF_Quit();
+    SDL_FreeSurface(background);
+    SDL_FreeSurface(message);
+    SDL_FreeSurface(bottom_message);
+  }
+
   void Intro::init(Game *game) {
     setGame(game);
     background = sdl::loadImage("app/images/intro_background.png");
@@ -46,7 +54,7 @@
       while (SDL_PollEvent(&event)) {
         key_code = event.key.keysym.sym;
 
-        if (key_code == SDLK_ESCAPE || key_code == SDLK_SPACE) {
+        if (key_code == 13) {
           is_active = false;
           break;
         }
@@ -62,5 +70,5 @@
       delay(&fps);
     }
 
-    freeBlink();
+    clear();
   }

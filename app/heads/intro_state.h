@@ -12,6 +12,7 @@
     SDL_Surface *bottom_message;
 
     void update();
+    void clear();
 
     public:
       Intro();
