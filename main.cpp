@@ -4,6 +4,8 @@
 int main() {
   SDL_WM_SetCaption("AirCrafts", NULL);
 
+  menu.init(&game);
+
   while (game.isRunning()) { game.initCurrentState(); }
 
   return 0;

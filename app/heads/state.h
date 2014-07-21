@@ -7,6 +7,8 @@ class State {
   protected:
     bool is_active;
     enum scope { INTRO, MENU, LEVELS };
+    class Game *game;
+
   public:
     State();
     virtual void init(class Game*) = 0;

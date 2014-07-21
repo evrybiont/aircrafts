@@ -5,7 +5,6 @@
 
   class Intro: public State {
     scope area;
-    Game *game;
 
     SDL_Surface *background;
     SDL_Surface *message;
