@@ -30,6 +30,7 @@
 
   void Intro::init(Game *game) {
     setGame(game);
+
     background = sdl::loadImage("app/images/intro_background.png");
 
     TTF_Init();

@@ -4,9 +4,8 @@
 int main() {
   SDL_WM_SetCaption("AirCrafts", NULL);
 
-  menu.init(&game);
-
   while (game.isRunning()) { game.initCurrentState(); }
 
+  std::cout << "Quit \n";
   return 0;
 }

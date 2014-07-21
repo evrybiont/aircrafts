@@ -3,6 +3,11 @@
 
 int Menu::nextArea() { return MENU; }
 
-void Menu::init(Game *g) {
-  std::cout << "Init Menu \n";
+void Menu::setGame(Game *g) { game = g; }
+
+void Menu::init(Game *game) {
+  while(true) {
+    std::cout << "Init Menu \n";
+  }
+  //game->stop();
 }

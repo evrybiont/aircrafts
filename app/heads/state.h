@@ -13,6 +13,7 @@ class State {
     State();
     virtual void init(class Game*) = 0;
     virtual int nextArea() = 0;
+    virtual void setGame(Game*) = 0;
 };
 
 #endif

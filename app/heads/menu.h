@@ -8,6 +8,7 @@ class Menu: public State {
   public:
     void init(Game*);
     int nextArea();
+    void setGame(Game*);
 };
 
 #endif
