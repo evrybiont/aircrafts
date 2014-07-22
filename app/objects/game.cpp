@@ -3,8 +3,6 @@
 #include "../heads/menu.h"
 #include <iostream>
 
-Intro intro;
-
 Game::Game() : is_running(true),
                screen(SDL_SetVideoMode(SC_WIDTH, SC_HEIGHT, SC_PBB, SDL_SWSURFACE)),
                current_state(NULL),
@@ -17,14 +15,15 @@ SDL_Surface* Game::getScreen() { return screen; }
 
 void Game::stop() { is_running = false; }
 
-void Game::setNextState() {
-  std::cout << "next state \n";
-  Menu menu;
-  current_state = &menu;
-}
+void Game::setNextState(scope state) { area = state; }
 
 void Game::chooseState() {
-  std::cout << "choose\n";
+
+  if(current_state) {
+    delete current_state;
+    current_state = NULL;
+  }
+
   switch(area) {
     case INTRO :
       current_state = new Intro;
@@ -36,7 +35,6 @@ void Game::chooseState() {
 }
 
 void Game::initCurrentState() {
-  std::cout << "current state\n";
   chooseState();
   current_state->init(this);
 }

@@ -4,12 +4,11 @@
 
   using namespace sdl;
 
-  Intro::Intro() : area(MENU),
-                   background(NULL),
+  Intro::Intro() : background(NULL),
                    message(NULL),
                    bottom_message(NULL) {}
 
-  int Intro::nextArea() { return area; }
+  Intro::~Intro() { std::cout << "INTRO DELETED\n"; }
 
   void Intro::setGame(Game *g) { game = g; }
 
@@ -57,6 +56,7 @@
 
         if (key_code == 13) {
           is_active = false;
+          game->setNextState(MENU);
           break;
         }
 

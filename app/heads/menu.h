@@ -6,8 +6,8 @@
 class Menu: public State {
 
   public:
+    ~Menu();
     void init(Game*);
-    int nextArea();
     void setGame(Game*);
 };
 
