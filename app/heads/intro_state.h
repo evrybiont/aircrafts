@@ -4,8 +4,6 @@
   #include "game.h"
 
   class Intro: public State {
-    scope area;
-
     SDL_Surface *background;
     SDL_Surface *message;
     SDL_Surface *bottom_message;
@@ -15,8 +13,8 @@
 
     public:
       Intro();
+      ~Intro();
       void init(Game*);
-      int nextArea();
       void setGame(Game*);
   };
 
