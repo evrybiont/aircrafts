@@ -8,11 +8,12 @@ class State {
     bool is_active;
     class Game *game;
 
+    void setGame(Game*);
+
   public:
     State();
     virtual ~State();
-    virtual void init(class Game*) = 0;
-    virtual void setGame(Game*) = 0;
+    virtual void init(Game*) = 0;
 };
 
 #endif

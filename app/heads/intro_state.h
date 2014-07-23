@@ -15,7 +15,6 @@
       Intro();
       ~Intro();
       void init(Game*);
-      void setGame(Game*);
   };
 
 #endif

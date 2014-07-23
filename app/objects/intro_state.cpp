@@ -10,8 +10,6 @@
 
   Intro::~Intro() { std::cout << "INTRO DELETED\n"; }
 
-  void Intro::setGame(Game *g) { game = g; }
-
   void Intro::update() {
     blink(bottom_message);
     applySurface(0, 0, background, game->getScreen());
