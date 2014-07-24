@@ -3,6 +3,6 @@
 
 #include "game.h"
 
- Game game;
+Game game;
 
 #endif

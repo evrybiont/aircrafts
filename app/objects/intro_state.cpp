@@ -1,5 +1,5 @@
 #include "../heads/intro_state.h"
-#include "../config/locales/intro.h"
+#include "../config/locales/intro_locale.h"
 #include <iostream>
 
   using namespace sdl;
@@ -19,7 +19,6 @@
 
   void Intro::clear(){
     freeBlink();
-    TTF_Quit();
     SDL_FreeSurface(background);
     SDL_FreeSurface(message);
     SDL_FreeSurface(bottom_message);
@@ -30,7 +29,6 @@
 
     background = sdl::loadImage("app/images/intro_background.png");
 
-    TTF_Init();
     TTF_Font *font = NULL;
     SDL_Color text_color = { 255, 255, 100 };
     font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", 32);
