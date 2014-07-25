@@ -1,7 +1,6 @@
 #include "../heads/menu_state.h"
 #include "../config/locales/menu_locale.h"
 
-#include "typeinfo"
 #include <iostream>
 
 using namespace std;
