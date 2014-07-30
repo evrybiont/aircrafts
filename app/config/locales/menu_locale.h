@@ -3,6 +3,6 @@
 
 using namespace std;
 
-const string fonts[] = { "Play Now", "Quit" };
+const string FONTS[] = { "Play Now", "Quit" };
 
 #endif

@@ -10,6 +10,7 @@ class Menu: public State {
   std::vector<sdl::Button*> buttons;
 
   void createButtons();
+  void drawButtons();
 
   public:
     Menu();
