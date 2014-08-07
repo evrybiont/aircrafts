@@ -6,15 +6,20 @@
 using namespace std;
 using namespace sdl;
 
-Menu::Menu() : background(NULL) {}
+Menu::Menu() : background(NULL),
+               line(SDL_CreateRGBSurface(0, 120, 1, 32, 0, 0, 0, 0))
+               {}
 
-Menu::~Menu() { std::cout << "MENU DELETED\n"; }
+Menu::~Menu() { cout << "MENU DELETED\n"; }
 
 void Menu::createButtons() {
+  //fill button under-line
+  SDL_FillRect(line, NULL, SDL_MapRGB(line->format, 255, 255, 100));
+
   int size = (sizeof(FONTS)/sizeof(FONTS[0]));
 
   for(int i = 0; i < size; i++ ) {
-    btn = new sdl::Button(FONTS[i]);
+    btn = new Button(FONTS[i]);
     buttons.push_back(btn);
   }
 }
@@ -40,11 +45,12 @@ void Menu::init(Game *game) {
   while(is_active) {
     applySurface(0, 0, background, game->getScreen());
     drawButtons();
+    applySurface(120, 185, line, game->getScreen());
     std::cout << "Init Menu \n";
     is_active = false;
     game->stop();
     SDL_Flip(game->getScreen());
   }
 
-  SDL_Delay(2000);
+  SDL_Delay(4000);
 }
