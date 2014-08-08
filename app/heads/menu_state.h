@@ -7,6 +7,7 @@
 class Menu: public State {
   SDL_Surface *background;
   SDL_Surface *line;
+  int y_line;
   sdl::Button *btn;
   std::vector<sdl::Button*> buttons;
 

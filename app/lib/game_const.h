@@ -5,6 +5,8 @@
   #define  SC_HEIGHT 400
   #define  SC_PBB 32
 
+  const int MENU_BUTTON_HEIGHT = 32;
+
   enum scope { INTRO, MENU, LEVELS };
 
 #endif

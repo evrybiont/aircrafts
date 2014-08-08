@@ -20,7 +20,7 @@ namespace sdl {
     SDL_Surface *btn_text;
 
     public:
-      Button(std::string);
+      Button(std::string, int);
       SDL_Surface* get();
   };
 }

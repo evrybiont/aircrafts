@@ -57,12 +57,12 @@ namespace sdl {
 
   // Button class
   //
-  sdl::Button::Button(std::string text) {
+  sdl::Button::Button(std::string text, int size) {
     btn_text = NULL;
 
     TTF_Font *font = NULL;
     SDL_Color text_color = { 255, 255, 100 };
-    font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", 32);
+    font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", size);
 
     if (font == NULL) { std::cout << TTF_GetError(); }
 
