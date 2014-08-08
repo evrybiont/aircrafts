@@ -50,7 +50,7 @@
       while (SDL_PollEvent(&event)) {
         key_code = event.key.keysym.sym;
 
-        if (key_code == 13) {
+        if (key_code == 32) {
           is_active = false;
           game->setNextState(MENU);
           break;

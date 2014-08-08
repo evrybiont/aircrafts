@@ -13,6 +13,7 @@ class Menu: public State {
 
   void createButtons();
   void drawButtons();
+  void update();
 
   public:
     Menu();

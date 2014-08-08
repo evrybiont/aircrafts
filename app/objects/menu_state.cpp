@@ -6,7 +6,7 @@
 using namespace std;
 using namespace sdl;
 
-Menu::Menu() : background(NULL),
+Menu::Menu() : background(loadImage("app/images/intro_background.png")),
                line(SDL_CreateRGBSurface(0, 120, 1, 32, 0, 0, 0, 0)),
                y_line(SC_HEIGHT/4 + MENU_BUTTON_HEIGHT)
                {}
@@ -38,20 +38,39 @@ void Menu::drawButtons() {
   applySurface(x, y_line, line, game->getScreen());
 }
 
+void Menu::update() {
+  applySurface(0, 0, background, game->getScreen());
+  drawButtons();
+}
+
 void Menu::init(Game *game) {
   setGame(game);
   createButtons();
 
-  background = loadImage("app/images/intro_background.png");
+  Timer fps;
+  Uint8 *keys = SDL_GetKeyState(NULL);
 
   while(is_active) {
-    applySurface(0, 0, background, game->getScreen());
-    drawButtons();
+    fps.start();
+    update();
 
-    is_active = false;
-    game->stop();
+    if( keys[ SDLK_UP ]) {
+      is_active = false;
+      game->stop();
+    }
+
+    if( keys[ SDLK_DOWN ]) {
+      is_active = false;
+      game->stop();
+    }
+
+    if( keys[ SDLK_RETURN ]) {
+      is_active = false;
+      game->stop();
+    }
+
     SDL_Flip(game->getScreen());
+    SDL_PumpEvents();
+    delay(&fps);
   }
-
-  SDL_Delay(4000);
 }
