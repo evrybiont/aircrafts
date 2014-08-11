@@ -8,7 +8,8 @@ using namespace sdl;
 
 Menu::Menu() : background(loadImage("app/images/intro_background.png")),
                line(SDL_CreateRGBSurface(0, 120, 1, 32, 0, 0, 0, 0)),
-               y_line(SC_HEIGHT/4 + MENU_BUTTON_HEIGHT)
+               y_line(SC_HEIGHT/4 + MENU_BUTTON_HEIGHT),
+               current_btn_index(1)
                {}
 
 Menu::~Menu() { cout << "MENU DELETED\n"; }
@@ -43,28 +44,40 @@ void Menu::update() {
   drawButtons();
 }
 
+void Menu::update_btn(bool up) {
+  if (up) {
+    if ((current_btn_index - 1) == 0) { current_btn_index = buttons.size(); }
+    else { current_btn_index -= 1; }
+  }
+  else {
+    if ((current_btn_index + 1) == buttons.size() + 1) { current_btn_index = 1; }
+    else { current_btn_index += 1; }
+  }
+}
+
 void Menu::init(Game *game) {
   setGame(game);
   createButtons();
+  update();
 
   Timer fps;
   Uint8 *keys = SDL_GetKeyState(NULL);
 
   while(is_active) {
     fps.start();
-    update();
 
     if( keys[ SDLK_UP ]) {
-      is_active = false;
-      game->stop();
+      update_btn(true);
+      update();
     }
 
     if( keys[ SDLK_DOWN ]) {
-      is_active = false;
-      game->stop();
+      update_btn(false);
+      update();
     }
 
     if( keys[ SDLK_RETURN ]) {
+      //game->setNextState(state());
       is_active = false;
       game->stop();
     }

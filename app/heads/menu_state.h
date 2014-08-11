@@ -9,11 +9,13 @@ class Menu: public State {
   SDL_Surface *line;
   int y_line;
   sdl::Button *btn;
+  int current_btn_index;
   std::vector<sdl::Button*> buttons;
 
   void createButtons();
   void drawButtons();
   void update();
+  void update_btn(bool);
 
   public:
     Menu();
