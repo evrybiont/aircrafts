@@ -7,9 +7,7 @@ using namespace std;
 using namespace sdl;
 
 Menu::Menu() : background(loadImage("app/images/intro_background.png")),
-               line(SDL_CreateRGBSurface(0, 120, 1, 32, 0, 0, 0, 0)),
-               y_line(SC_HEIGHT/4 + MENU_BUTTON_HEIGHT),
-               current_btn_index(1)
+               line(SDL_CreateRGBSurface(0, 120, 1, 32, 0, 0, 0, 0))
                {}
 
 Menu::~Menu() { cout << "MENU DELETED\n"; }
@@ -24,6 +22,8 @@ void Menu::createButtons() {
     btn = new Button(FONTS[i], MENU_BUTTON_HEIGHT);
     buttons.push_back(btn);
   }
+
+  current_btn_index = 1;
 }
 
 void Menu::drawButtons() {
@@ -32,6 +32,7 @@ void Menu::drawButtons() {
   int y = SC_HEIGHT/4;
 
   for(int i=0; i < size; i++) {
+    if (i+1 == current_btn_index) { y_line = y + MENU_BUTTON_HEIGHT; }
     applySurface(x, y, buttons[i]->get(), game->getScreen());
     y += SC_HEIGHT/8;
   }
