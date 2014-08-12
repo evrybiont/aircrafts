@@ -56,18 +56,21 @@ namespace sdl {
   }
 
   // Button class
-  //
-  sdl::Button::Button(std::string text, int size) {
-    btn_text = NULL;
 
-    TTF_Font *font = NULL;
-    SDL_Color text_color = { 255, 255, 100 };
-    font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", size);
+sdl::Button::Button(std::string text, int size, scope area) {
+  state = area;
+  btn_text = NULL;
 
-    if (font == NULL) { std::cout << TTF_GetError(); }
+  TTF_Font *font = NULL;
+  SDL_Color text_color = { 255, 255, 100 };
+  font = TTF_OpenFont("app/fonts/InfernosSpicy.ttf", size);
 
-    btn_text = TTF_RenderText_Solid(font, text.c_str(), text_color);
-  }
+  if (font == NULL) { std::cout << TTF_GetError(); }
 
-  SDL_Surface* sdl::Button::get() { return btn_text; }
+  btn_text = TTF_RenderText_Solid(font, text.c_str(), text_color);
+}
+
+SDL_Surface* sdl::Button::get() { return btn_text; }
+
+scope sdl::Button::getState() { return state; }
 }

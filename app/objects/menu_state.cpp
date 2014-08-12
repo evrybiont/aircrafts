@@ -19,11 +19,11 @@ void Menu::createButtons() {
   int size = (sizeof(FONTS)/sizeof(FONTS[0]));
 
   for(int i = 0; i < size; i++ ) {
-    btn = new Button(FONTS[i], MENU_BUTTON_HEIGHT);
+    btn = new Button(FONTS[i], MENU_BUTTON_HEIGHT, BUTTON_STATE[i]);
     buttons.push_back(btn);
   }
 
-  current_btn_index = 1;
+  current_btn_index = 0;
 }
 
 void Menu::drawButtons() {
@@ -32,7 +32,7 @@ void Menu::drawButtons() {
   int y = SC_HEIGHT/4;
 
   for(int i=0; i < size; i++) {
-    if (i+1 == current_btn_index) { y_line = y + MENU_BUTTON_HEIGHT; }
+    if (i == current_btn_index) { y_line = y + MENU_BUTTON_HEIGHT; }
     applySurface(x, y, buttons[i]->get(), game->getScreen());
     y += SC_HEIGHT/8;
   }
@@ -47,11 +47,11 @@ void Menu::update() {
 
 void Menu::update_btn(bool up) {
   if (up) {
-    if ((current_btn_index - 1) == 0) { current_btn_index = buttons.size(); }
+    if ((current_btn_index - 1) == -1) { current_btn_index = buttons.size() - 1; }
     else { current_btn_index -= 1; }
   }
   else {
-    if ((current_btn_index + 1) == buttons.size() + 1) { current_btn_index = 1; }
+    if ((current_btn_index + 1) == buttons.size()) { current_btn_index = 0; }
     else { current_btn_index += 1; }
   }
 }
@@ -78,7 +78,7 @@ void Menu::init(Game *game) {
     }
 
     if( keys[ SDLK_RETURN ]) {
-      //game->setNextState(state());
+      game->setNextState(buttons[current_btn_index]->getState());
       is_active = false;
       game->stop();
     }

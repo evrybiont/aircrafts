@@ -2,6 +2,7 @@
 #define SDL_SPACE_H
 
 #include "timer.h"
+#include "game_const.h"
 
 namespace sdl {
 
@@ -18,10 +19,12 @@ namespace sdl {
   class Button {
     SDL_Surface *btn;
     SDL_Surface *btn_text;
+    scope state;
 
     public:
-      Button(std::string, int);
+      Button(std::string, int, scope);
       SDL_Surface* get();
+      scope getState();
   };
 }
 
