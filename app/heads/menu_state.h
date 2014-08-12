@@ -16,6 +16,7 @@ class Menu: public State {
   void drawButtons();
   void update();
   void update_btn(bool);
+  void clear();
 
   public:
     Menu();

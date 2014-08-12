@@ -56,6 +56,12 @@ void Menu::update_btn(bool up) {
   }
 }
 
+void Menu::clear() {
+  buttons.clear();
+  SDL_FreeSurface(background);
+  SDL_FreeSurface(line);
+}
+
 void Menu::init(Game *game) {
   setGame(game);
   createButtons();
@@ -80,7 +86,6 @@ void Menu::init(Game *game) {
     if( keys[ SDLK_RETURN ]) {
       game->setNextState(buttons[current_btn_index]->getState());
       is_active = false;
-      game->stop();
     }
 
     SDL_Flip(game->getScreen());
