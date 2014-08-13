@@ -3,6 +3,6 @@
 
 using namespace std;
 
-void LevelsState::init(Game *game) {
-  cout << "Levels init" << endl;
-}
+LevelsState::~LevelsState() {}
+
+void LevelsState::init(Game *game) {}

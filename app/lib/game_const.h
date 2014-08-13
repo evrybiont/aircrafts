@@ -9,4 +9,6 @@
 
   enum scope { INTRO, MENU, PLAY, QUIT};
 
+  enum levels { LEVEL_01, LEVEL_02 };
+
 #endif

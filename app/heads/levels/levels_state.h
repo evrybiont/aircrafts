@@ -5,7 +5,8 @@
 
 class LevelsState {
   public:
-    void init(Game*);
+    virtual ~LevelsState();
+    virtual void init(Game*);
 };
 
 #endif
