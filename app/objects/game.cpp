@@ -2,7 +2,7 @@
 #include "../heads/intro_state.h"
 #include "../heads/menu_state.h"
 #include "../heads/quit_state.h"
-#include "../heads/levels_state.h"
+#include "../heads/play_state.h"
 #include <iostream>
 
 Game::Game() : is_running(true),
@@ -33,8 +33,8 @@ void Game::chooseState() {
     case MENU :
       current_state = new Menu;
       break;
-    case LEVELS :
-      current_state = new LevelsState;
+    case PLAY :
+      current_state = new PlayState;
       break;
     case QUIT :
       current_state = new QuitState;

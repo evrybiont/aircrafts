@@ -4,6 +4,6 @@
 using namespace std;
 
 const string FONTS[] = { "Play Now", "Quit" };
-const scope BUTTON_STATE[] = { LEVELS, QUIT };
+const scope BUTTON_STATE[] = { PLAY, QUIT };
 
 #endif

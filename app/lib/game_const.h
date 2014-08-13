@@ -7,6 +7,6 @@
 
   const int MENU_BUTTON_HEIGHT = 32;
 
-  enum scope { INTRO, MENU, LEVELS, QUIT};
+  enum scope { INTRO, MENU, PLAY, QUIT};
 
 #endif
