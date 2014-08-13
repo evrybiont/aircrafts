@@ -3,6 +3,8 @@
 
 using namespace std;
 
+LevelsState::LevelsState() {}
+
 LevelsState::~LevelsState() {}
 
 void LevelsState::init(Game *game) {}

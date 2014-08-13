@@ -5,6 +5,7 @@
 
 class Level_01: public LevelsState {
   public:
+    Level_01();
     ~Level_01();
     void init(Game*);
 };

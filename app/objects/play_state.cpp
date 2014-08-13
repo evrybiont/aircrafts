@@ -23,14 +23,10 @@ void PlayState::chooseLevel() {
 
 
 void PlayState::init(Game *game) {
-  Timer fps;
-
   while(is_active) {
-    fps.start();
     chooseLevel();
     current_level->init(game);
     is_active = false;
     game->stop();
-    delay(&fps);
   }
 }

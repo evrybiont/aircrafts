@@ -58,6 +58,8 @@ void Menu::update_btn(bool up) {
 
 void Menu::clear() {
   buttons.clear();
+  applySurface(0, 0, background, game->getScreen());
+  SDL_Flip(game->getScreen());
   SDL_FreeSurface(background);
   SDL_FreeSurface(line);
 }
@@ -92,4 +94,6 @@ void Menu::init(Game *game) {
     SDL_PumpEvents();
     delay(&fps);
   }
+
+  clear();
 }
