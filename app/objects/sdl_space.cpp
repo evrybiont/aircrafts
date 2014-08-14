@@ -55,7 +55,7 @@ namespace sdl {
     SDL_SetAlpha(source, SDL_SRCALPHA, getTrans());
   }
 
-  // Button class
+// Button class
 
 sdl::Button::Button(std::string text, int size, scope area) {
   state = area;
@@ -73,4 +73,14 @@ sdl::Button::Button(std::string text, int size, scope area) {
 SDL_Surface* sdl::Button::get() { return btn_text; }
 
 scope sdl::Button::getState() { return state; }
+
+// Button class end
+
+// Modal class
+
+sdl::Modal::Modal(int w, int h) {
+  modal = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
+}
+
+// Modal class end
 }

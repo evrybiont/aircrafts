@@ -5,6 +5,8 @@
 #include "game_const.h"
 
 namespace sdl {
+  #include "heads/button.h"
+  #include "heads/modal.h"
 
   void delay(Timer*);
 
@@ -15,17 +17,6 @@ namespace sdl {
   void blink(SDL_Surface*);
 
   void freeBlink();
-
-  class Button {
-    SDL_Surface *btn;
-    SDL_Surface *btn_text;
-    scope state;
-
-    public:
-      Button(std::string, int, scope);
-      SDL_Surface* get();
-      scope getState();
-  };
 }
 
 #endif
