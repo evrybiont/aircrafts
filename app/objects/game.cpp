@@ -5,6 +5,8 @@
 #include "../heads/play_state.h"
 #include <iostream>
 
+using namespace std;
+
 Game::Game() : is_running(true),
                screen(SDL_SetVideoMode(SC_WIDTH, SC_HEIGHT, SC_PBB, SDL_SWSURFACE)),
                current_state(NULL),

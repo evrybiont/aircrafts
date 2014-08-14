@@ -5,7 +5,9 @@
 using namespace std;
 using namespace sdl;
 
-PlayState::PlayState() : level(LEVEL_01) {}
+PlayState::PlayState() : current_level(NULL),
+                         level(LEVEL_01)
+                         {}
 
 void PlayState::chooseLevel() {
 
