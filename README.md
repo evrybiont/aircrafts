@@ -7,4 +7,4 @@ aircrafts
 
 [Valgrind](http://valgrind.org/) - `apt-get install valgrind`
 
-Run game with gvim command `:make && ./main`
+Run game `:make && ./main`

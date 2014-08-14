@@ -70,28 +70,33 @@ void Menu::init(Game *game) {
   update();
 
   Timer fps;
-  Uint8 *keys = SDL_GetKeyState(NULL);
+  SDL_Event event;
+  SDLKey key_pressed;
 
   while(is_active) {
     fps.start();
 
-    if( keys[ SDLK_UP ]) {
-      update_btn(true);
-      update();
+    while (SDL_PollEvent(&event)) {
+      if (event.type == SDL_KEYDOWN) {
+        key_pressed = event.key.keysym.sym;
+
+        switch(key_pressed) {
+        case 273 :
+          update_btn(true);
+          break;
+        case 274 :
+          update_btn(false);
+          break;
+        case 13 :
+          game->setNextState(buttons[current_btn_index]->getState());
+          is_active = false;
+          break;
+        }
+      }
     }
 
-    if( keys[ SDLK_DOWN ]) {
-      update_btn(false);
-      update();
-    }
-
-    if( keys[ SDLK_RETURN ]) {
-      game->setNextState(buttons[current_btn_index]->getState());
-      is_active = false;
-    }
-
+    update();
     SDL_Flip(game->getScreen());
-    SDL_PumpEvents();
     delay(&fps);
   }
 
