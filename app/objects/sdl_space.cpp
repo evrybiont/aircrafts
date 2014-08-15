@@ -78,9 +78,16 @@ scope sdl::Button::getState() { return state; }
 
 // Modal class
 
-sdl::Modal::Modal(int w, int h) {
-  modal = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
+sdl::Modal::Modal(int w, int h, int opacity) {
+  background = SDL_CreateRGBSurface(0, SC_WIDTH, SC_HEIGHT, SC_PBB, 0, 0, 0, 0);
+  modal = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 100);
+
+  SDL_FillRect(modal, NULL, SDL_MapRGB(modal->format, 70, 50, 30));
+  SDL_SetAlpha(background, SDL_SRCALPHA, opacity);
 }
+
+SDL_Surface* sdl::Modal::getBackground() { return background; }
+SDL_Surface* sdl::Modal::getModal() { return modal; }
 
 // Modal class end
 }

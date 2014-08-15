@@ -9,7 +9,8 @@ Level_01::Level_01() {}
 Level_01::~Level_01() { cout << "LEVEL_01 DELETED\n"; }
 
 void Level_01::init(Game *game) {
-  cout << "Init Level 01" << endl;
+  Modal menu(400, 200, 100);
+
   is_running = true;
   background = loadImage("app/images/level_01/background.png");
 
