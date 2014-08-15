@@ -15,14 +15,30 @@ void Level_01::init(Game *game) {
   background = loadImage("app/images/level_01/background.png");
 
   Timer fps;
-  SDL_Flip(game->getScreen());
+  SDL_Event event;
+  SDLKey key_pressed;
 
   while(is_running) {
+    fps.start();
     applySurface(0, 0, background, game->getScreen());
-    //fps.start();
-    is_running = false;
+
+    while (SDL_PollEvent(&event)) {
+      if (event.type == SDL_KEYDOWN) {
+        key_pressed = event.key.keysym.sym;
+
+        switch(key_pressed) {
+          case 27 : //ESC
+            cout << "ESC PRESSED" << endl;
+            break;
+          case 13 :
+            is_running = false;
+            game->stop();
+            break;
+        }
+      }
+    }
+
     SDL_Flip(game->getScreen());
-    //delay(&fps);
+    delay(&fps);
   }
-  SDL_Delay(4000);
 }
